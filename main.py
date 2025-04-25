@@ -5,10 +5,10 @@ from models.inventario import Categoria, Producto, MovimientoInventario, OrdenCo
 from models.taller import Mantenimiento, DetalleMantenimiento
 
 from fastapi import FastAPI
-from database import engine, Base
-from routers import servicios
 
+from routers import servicios
 from routers import inventario
+from routers import taller
 
 app = FastAPI()
 
@@ -17,3 +17,4 @@ Base.metadata.create_all(bind=engine)
 
 app.include_router(servicios.router)
 app.include_router(inventario.router)
+app.include_router(taller.router)

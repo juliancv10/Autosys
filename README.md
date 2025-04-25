@@ -16,9 +16,11 @@ El proyecto está organizado en los siguientes directorios y archivos principale
 - `routers/`: Contiene los controladores para manejar las rutas de la API.
   - `inventario.py`: Rutas relacionadas con el inventario.
   - `servicios.py`: Rutas relacionadas con los servicios.
+  - `taller.py`: Rutas relacionadas con el módulo de taller.
 - `schemas/`: Contiene los esquemas de datos para validación y serialización.
   - `inventario.py`: Esquemas relacionados con el inventario.
   - `servicios.py`: Esquemas relacionados con los servicios.
+  - `taller.py`: Esquemas relacionados con el módulo de taller.
 
 ## Requisitos
 

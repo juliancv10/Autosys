@@ -5,10 +5,13 @@ from models.inventario import Categoria, Producto, MovimientoInventario, OrdenCo
 from models.taller import Mantenimiento, DetalleMantenimiento
 
 from fastapi import FastAPI
-
+from database import engine, Base
 from routers import servicios
-from routers import inventario
-from routers import taller
+
+from models import vehiculo  # 👈 Asegúrate de registrar este modelo
+from routers import vehiculo
+app.include_router(vehiculo.router)
+
 
 app = FastAPI()
 
@@ -16,5 +19,3 @@ app = FastAPI()
 Base.metadata.create_all(bind=engine)
 
 app.include_router(servicios.router)
-app.include_router(inventario.router)
-app.include_router(taller.router)

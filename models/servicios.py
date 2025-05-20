@@ -12,6 +12,7 @@ class Cliente(Base):
     identificacion = Column(String(30), unique=True, nullable=False)
     telefono = Column(String(20))
     correo = Column(String(100))
+    direccion = Column(String(150))
 
     vehiculos = relationship("Vehiculo", back_populates="cliente")
     servicios_solicitados = relationship("ServicioSolicitado", back_populates="cliente")
@@ -24,7 +25,7 @@ class Vehiculo(Base):
     placa = Column(String(10), unique=True, nullable=False)
     marca = Column(String(50))
     modelo = Column(String(50))
-    anio = Column(String(50))
+    color = Column(String(50))
 
     cliente_id = Column(Integer, ForeignKey("clientes.id"))
     cliente = relationship("Cliente", back_populates="vehiculos")
@@ -49,8 +50,7 @@ class ServicioSolicitado(Base):
     id = Column(Integer, primary_key=True, index=True)
     fecha_solicitud = Column(DateTime, default=datetime.utcnow)
     estado = Column(String(30), default="pendiente")  # pendiente, en_proceso, finalizado
-    descripcion = Column(Text)
-    
+
     cliente_id = Column(Integer, ForeignKey("clientes.id"))
     vehiculo_id = Column(Integer, ForeignKey("vehiculos.id"))
     servicio_id = Column(Integer, ForeignKey("servicios.id"))

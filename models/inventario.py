@@ -25,8 +25,6 @@ class Producto(Base):
     categoria = relationship("Categoria", back_populates="productos")
 
     movimientos = relationship("MovimientoInventario", back_populates="producto")
-    movimientos = relationship("Movimiento", back_populates="producto")
-
     detalles_orden = relationship("DetalleOrdenCompra", back_populates="producto")
 
 
@@ -65,15 +63,3 @@ class DetalleOrdenCompra(Base):
 
     producto = relationship("Producto", back_populates="detalles_orden")
     orden = relationship("OrdenCompra", back_populates="detalles")
-
-class Movimiento(Base):
-    __tablename__ = "movimientos"
-
-    id = Column(Integer, primary_key=True, index=True)
-    producto_id = Column(Integer, ForeignKey("productos.id"), nullable=False)
-    tipo_movimiento = Column(String(50), nullable=False)  # Ej: 'entrada' o 'salida'
-    cantidad = Column(Integer, nullable=False)
-    fecha = Column(DateTime, default=datetime.utcnow)
-    descripcion = Column(Text)
-
-    producto = relationship("Producto", back_populates="movimientos")

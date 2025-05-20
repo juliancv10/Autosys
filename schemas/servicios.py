@@ -45,12 +45,10 @@ class ServicioSolicitadoBase(BaseModel):
 class ServicioSolicitadoCreate(ServicioSolicitadoBase):
     cliente_id: int
     vehiculo_id: int
-    servicio_id: int
 
 class ServicioSolicitadoOut(ServicioSolicitadoBase):
     id: int
     cliente_id: int
     vehiculo_id: int
-    servicio_id: int
     class Config:
         orm_mode = True
